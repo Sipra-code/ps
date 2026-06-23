@@ -1,0 +1,822 @@
+\documentclass{book}
+
+\usepackage{graphicx,epsfig}
+\usepackage{hyperref}
+\usepackage{amsmath,amssymb}
+\usepackage[toc,page]{appendix}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{colortbl}
+\usepackage[table]{xcolor}
+\usepackage{multirow}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{parskip}
+\usepackage{mdframed}
+\usepackage{tikz}
+\usepackage{microtype}
+
+% ── Page geometry ──────────────────────────────────────────────────
+\geometry{
+  a4paper,
+  top=1in, bottom=1in,
+  left=1in, right=1in,
+  headheight=15pt
+}
+
+% ── Colours ────────────────────────────────────────────────────────
+\definecolor{darkblue}{HTML}{1F3864}
+\definecolor{midblue}{HTML}{2E75B6}
+\definecolor{lightblue}{HTML}{D6E4F0}
+\definecolor{lightgray}{HTML}{F2F2F2}
+\definecolor{redlight}{HTML}{FADBD8}
+\definecolor{greenlight}{HTML}{D5F5E3}
+\definecolor{yellowlight}{HTML}{FEF9E7}
+\definecolor{orangelight}{HTML}{FDEBD0}
+\definecolor{infobox}{HTML}{EAF4FB}
+\definecolor{rowalt}{HTML}{EBF5FB}
+
+% ── Info box style ─────────────────────────────────────────────────
+\newmdenv[
+  backgroundcolor=infobox,
+  linecolor=midblue,
+  linewidth=3pt,
+  leftline=true, rightline=false, topline=false, bottomline=false,
+  innerleftmargin=10pt, innerrightmargin=10pt,
+  innertopmargin=6pt, innerbottommargin=6pt,
+  skipabove=8pt, skipbelow=8pt
+]{infobox}
+
+% ── Table column types ─────────────────────────────────────────────
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+
+% ── Header/footer ─────────────────────────────────────────────────
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\color{midblue} Jet Room Inspection Report\ $|$\ Spinning Dept.\ ---\ VSF Process}
+\fancyhead[R]{\small\color{midblue} Nagda Unit $|$ June 2026}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\renewcommand{\baselinestretch}{1.3}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+% ══════════════════════════════════════════════════════════════════
+\begin{document}
+\bibliographystyle{plain}
+
+% ══ COVER PAGE ════════════════════════════════════════════════════
+\thispagestyle{empty}
+
+\vspace*{1cm}
+\begin{center}
+  {\bf\Large A REPORT}\\[0.3cm]
+  {\bf\Large ON}\\[0.3cm]
+  {\bf\Large JET ROOM INSPECTION}\\[2cm]
+
+  {\bf BY}\\[1cm]
+
+  \begin{tabular}{lll}
+    Name of the student & \hspace{2cm} ID No. & \hspace{2cm} Discipline \\[4pt]
+    Sipra Das & \hspace{2cm} 2024B2TS1167P & \hspace{2cm} M.Sc.\ in Chemistry \\
+  \end{tabular}
+
+  \vspace{2cm}
+  {\bf Prepared in partial fulfillment of the\\
+  Practice School -- I}
+
+  \vspace{0.5cm}
+  AT
+
+  \vspace{1cm}
+  {\bf Grasim Industries, Nagda}\\[0.2cm]
+  {\bf A Practice School -- I}\\[0.2cm]
+  {\bf Station of}\\[0.5cm]
+
+  % BITS logo placeholder — replace logo.eps with actual file if available
+  % \includegraphics[width=1.0in]{logo.eps}\\[0.3cm]
+
+  {\bf BIRLA INSTITUTE OF TECHNOLOGY \& SCIENCE, PILANI}\\[0.5cm]
+  {\bf June, 2026}
+\end{center}
+
+\newpage
+
+% ══ SECOND PAGE (Station details) ═════════════════════════════════
+\thispagestyle{empty}
+
+\begin{center}
+  {\bf BIRLA INSTITUTE OF TECHNOLOGY \& SCIENCE, PILANI}\\[0.2cm]
+  {\bf Practice School Division}
+\end{center}
+
+\vspace{0.5cm}
+
+\begin{tabular}{p{7cm} l}
+  & \\
+  Station: & \hspace{3cm} Centre: \\
+  {\bf Grasim Industries} & \hspace{3cm} {\bf Nagda, Madhya Pradesh} \\[6pt]
+  Duration: & \hspace{3cm} Date of start: \\
+  {\bf 1 Month} & \hspace{3cm} {\bf 25-05-2026} \\[6pt]
+  Date of submission: & \\
+  {\bf 24-06-2026} & \\[6pt]
+  Title of the project: & \\
+  {\bf JET Room Inspection} & \\[6pt]
+  ID No., Name and Discipline of the student: & \\
+  {\bf 2024B2TS1167P} & \\
+  {\bf Sipra Das} & \\
+  {\bf M.Sc.\ in Chemistry} & \\[6pt]
+  Name and Designation of the expert: & \\
+  {\bf Ramdev Parashar} & \\
+  {\bf HOD, Chemical Laboratory} & \\[6pt]
+  Name of PS faculty member: & \\
+  {\bf Aditya Singh} & \\[6pt]
+  Key words: & \\
+  Spinneret, Chromic Acid, VSF Spinning, Jet Cleaning, & \\
+  Bath Deviation, Quality Inspection & \\[6pt]
+  Project area: & \\
+  Viscose Staple Fibre Manufacturing --- Spinning Department & \\[6pt]
+  Abstract: & \\
+  \multicolumn{2}{p{14cm}}{
+    This report documents the complete Jet Cleaning and Inspection System
+    in the Spinning Department at Grasim Industries, Nagda Unit.
+    It covers the step-by-step cleaning process (dismantling, soft water wash,
+    chromic acid bath, ultrasonic cleaning, steam treatment, and light-box inspection),
+    SOPs, safety requirements, and a three-week analytical study of chromic acid bath
+    performance across all six Jet Rooms. Back-calculated chemical preparation data,
+    deviation trend analysis, root cause identification, and actionable
+    recommendations are presented to improve process consistency and product quality.
+  } \\[1.5cm]
+  Signature of the student(s) & \hspace{1cm} Signature of the PS faculty member(s) \\[0.3cm]
+  \includegraphics[width=2.0cm]{signature.png} & \\[6pt]
+  Date: 24-06-2026 & \hspace{1cm} Date: \\
+\end{tabular}
+
+\newpage
+
+% ══ ACKNOWLEDGEMENTS ══════════════════════════════════════════════
+\thispagestyle{empty}
+\begin{center}
+  {\bf\Large Acknowledgements}
+\end{center}
+\vspace{0.5cm}
+
+\par\noindent
+I would like to express my sincere gratitude to \textbf{Mr.\ Ramdev Parashar}, HOD of the Chemical Laboratory at Grasim Industries, Nagda, for his invaluable guidance and support throughout this study. His practical insights into the VSF spinning process and jet maintenance operations were indispensable to the completion of this report.
+
+\par\noindent
+I am also grateful to the operators and supervisors of the Spinning Department at the Nagda Unit for their cooperation during process observations and data collection, particularly during the three weekly chromic acid bath audit cycles conducted in June 2026.
+
+\par\noindent
+I extend my thanks to \textbf{Prof.\ Aditya Singh}, PS Faculty Member at BITS Pilani, for his academic guidance and encouragement during Practice School -- I.
+
+\vfill
+\par\noindent
+{\bf Signature of the student}\\[0.5cm]
+\includegraphics[width=2.2cm]{signature.png}\\[4pt]
+Sipra Das\\
+2024B2TS1167P
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+% ══════════════════════════════════════════════════════════════════
+% CHAPTER 1 — INTRODUCTION
+% ══════════════════════════════════════════════════════════════════
+\chapter{Introduction}
+
+In the viscose staple fibre (VSF) spinning process, the spinning jet --- commonly referred to as the \textit{spinneret} --- is the single most critical tool in converting dissolved cellulose (viscose dope) into fine textile fibres. Liquid viscose is metered under controlled pressure through the spinneret's microscopic holes into an acidic coagulation bath, where individual filaments regenerate into solid cellulose and are drawn off as continuous fibre tow.
+
+Given the extreme precision of spinneret geometry --- hole diameters of approximately 60 microns --- even the smallest accumulation of coagulated viscose, inorganic salt deposits, or acid-borne crystalline residue can cause significant disruption. Partially blocked holes generate back-pressure, denier variation, and filament breaks. If unchecked, such blockages lead to machine downtime, increased polymer waste, and compromised fibre quality.
+
+This report documents the complete Jet Cleaning and Jet Inspection System in the Spinning Department at Nagda Unit --- covering the step-by-step process, standard operating procedures, safety requirements, and a three-week analytical study of chromic acid bath performance across all six Jet Rooms, including chemical preparation back-calculation, deviation trend analysis, and process improvement recommendations.
+
+\section{Types of Spinnerets}
+
+Spinnerets used in the VSF process vary by capacity and application. Figure~\ref{fig:spinnerettes} illustrates the three principal types encountered in industrial fibre production.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\textwidth]{spinnerettes.png}
+  \caption{Types of Spinnerets used in VSF fibre production}
+  \label{fig:spinnerettes}
+\end{figure}
+
+At Nagda Unit, the spinnerets are manufactured from a \textbf{Gold--Rhodium--Cadmium alloy}, selected for its exceptional corrosion resistance to the H$_2$SO$_4$-based coagulation bath and dimensional stability under sustained thermal and chemical exposure. Hole diameters are approximately 60~microns, making these instruments extremely sensitive to contamination.
+
+\section{Scope of Work}
+
+Table~\ref{tab:scope} summarises the scope of activities undertaken during the study period of June 2026.
+
+\begin{table}[H]
+  \centering
+  \caption{Scope of Work}
+  \label{tab:scope}
+  \rowcolors{2}{rowalt}{white}
+  \begin{tabular}{L{4cm} L{9cm}}
+    \toprule
+    \rowcolor{darkblue}
+    \color{white}\textbf{Parameter} & \color{white}\textbf{Details} \\
+    \midrule
+    Location         & Jet Room, Spinning Department --- Nagda Unit \\
+    Process Studied  & Jet Cleaning System \& Jet Inspection System (VSF Spinning Process) \\
+    Study Period     & June 2026 --- Three weekly audit cycles (01-Jun, 08-Jun, 15-Jun 2026) \\
+    Jet Rooms        & Jet Rooms 1 through 6 (all active rooms) \\
+    Activities       & Process observation, chromic acid bath parameter recording, chemical preparation back-calculation, weekly deviation audits, root cause analysis \\
+    Objective        & Document the complete jet cleaning \& inspection process; analyse chromic acid bath performance; identify process gaps and provide actionable recommendations \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+% ══════════════════════════════════════════════════════════════════
+% CHAPTER 2 — SIGNIFICANCE OF JETS
+% ══════════════════════════════════════════════════════════════════
+\chapter{Significance of Jets (Spinnerets)}
+
+The spinneret shapes dissolved viscose dope into individual filaments as it is extruded into the spin bath. Its condition directly determines fibre quality, machine efficiency, and equipment life. Unlike standard machine components, spinnerets are precision instruments made from expensive alloys and must be maintained with rigorous consistency.
+
+\section{Impact on Fibre Quality and Machine Performance}
+
+\begin{itemize}[leftmargin=1.5em]
+  \item A clean, unobstructed spinneret ensures uniform extrusion velocity across all holes --- the foundation of consistent denier (fibre linear density) and uniform filament diameter. Even a single partially blocked hole alters local extrusion pressure, causing that filament to be thicker or thinner than adjacent ones, producing denier variation and downstream fabric defects.
+  \item Progressive blockage increases back-pressure on metering pumps, leading to pump seal wear, drive motor overload, and unscheduled maintenance downtime --- all of which translate directly into production losses.
+  \item Residual chemical contamination from inadequate rinsing can damage the viscose dope chemistry at the point of extrusion, compounding quality problems across the entire machine output.
+\end{itemize}
+
+\section{Alloy Composition and Properties}
+
+\begin{itemize}[leftmargin=1.5em]
+  \item Spinnerets at Nagda Unit are manufactured from a \textbf{Gold--Rhodium--Cadmium alloy}, selected for its exceptional corrosion resistance to the H$_2$SO$_4$-based coagulation bath and dimensional stability under sustained thermal and chemical exposure.
+  \item The high cost of this alloy makes proper cleaning and handling essential --- mechanical damage (scratches on the jet face, deformation) or chemical attack during cleaning is irreversible and results in direct financial loss through jet scrapping.
+  \item With hole diameters of approximately 60~microns, jets must be cleaned to a standard far beyond what visual inspection of holes alone can verify.
+\end{itemize}
+
+\section{Jet Assembly --- Components and Functions}
+
+The jet assembly is a precision multi-component unit. Table~\ref{tab:components} lists each component and its function. Understanding these roles is essential to appreciating why proper dismantling sequence, thorough individual cleaning, and correct reassembly are all critical to jet performance.
+
+\begin{table}[H]
+  \centering
+  \caption{Jet Assembly Components and Functions}
+  \label{tab:components}
+  \rowcolors{2}{rowalt}{white}
+  \begin{tabular}{L{3cm} L{4cm} L{6cm}}
+    \toprule
+    \rowcolor{darkblue}
+    \color{white}\textbf{Component} & \color{white}\textbf{Description} & \color{white}\textbf{Function / Role} \\
+    \midrule
+    Spinneret body   & Alloy body (Au--Rh--Cd) & Houses the 60-micron extrusion holes; extruded viscose passes through its bores into the spin bath \\
+    Fine sieve       & Precision mesh filter above spinneret & Filters undissolved particles from viscose dope before extrusion; protects bores from blockage \\
+    Flat washer      & Precision-machined sealing ring & Ensures pressure-tight seal between sieve and spinneret body; prevents by-pass flow \\
+    Perforated plate & Support plate with larger perforations & Distributes viscose flow uniformly across the fine sieve surface \\
+    Union (dice)     & Threaded connector / jet holder & Attaches jet assembly to the spinning machine metering pump \\
+    Rubber cap       & Protective cover for jet face & Prevents contamination and mechanical damage to spinneret holes during transit and storage \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{infobox}
+\textit{Note: The spinneret body and fine sieve are the most contamination-prone components. The flat washer and perforated plate must be inspected for deformation or corrosion pitting during every cleaning cycle --- dimensional changes affect sealing integrity and flow uniformity.}
+\end{infobox}
+
+% ══════════════════════════════════════════════════════════════════
+% CHAPTER 3 — PROCESS FLOW
+% ══════════════════════════════════════════════════════════════════
+\chapter{Process Flow and Standard Operating Procedures}
+
+\section{Process Flow Overview}
+
+Every jet returning from the spinning floor undergoes a mandatory multi-stage cleaning and inspection cycle before it can be redeployed. No jet is returned to production without completing all stages and passing the final two-stage inspection. Figure~\ref{fig:flowchart} illustrates the complete process.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.55\textwidth]{flowchart.png}
+  \caption{Jet Cleaning and Inspection Process Flow}
+  \label{fig:flowchart}
+\end{figure}
+
+\section{Detailed Step-by-Step SOPs}
+
+\subsection{Receipt and Initial Assessment}
+
+Jets arrive from the spinning floor with protective rubber caps secured on the jet face to prevent damage during transit. Upon receipt:
+\begin{itemize}[leftmargin=1.5em]
+  \item Jets are logged against the machine number they were removed from, with the reason for return (scheduled cleaning, filament break, back-pressure alarm).
+  \item The rubber cap is carefully removed; the jet face is examined under normal lighting for gross mechanical damage before entering the cleaning cycle.
+  \item Jets with visible cracks, deep scratches on the spinneret face, or bent components are flagged for supervisor assessment.
+\end{itemize}
+
+\subsection{Dismantling}
+
+Dismantling is performed at the dice (union / jet holder) using a spanner, in the following strict sequence:
+\begin{enumerate}[leftmargin=1.5em]
+  \item Remove the union from the metering pump connection point.
+  \item Unscrew and separate the spinneret body.
+  \item Remove the fine sieve, flat washer, and perforated plate in sequence.
+  \item Place each component separately in the cleaning tray --- never stack, as stacking scratches the spinneret face.
+\end{enumerate}
+
+\begin{infobox}
+\textbf{Critical:} The spinneret body must never be placed face-down on any hard surface. Use a soft rubber mat or dedicated holder at all times. The 60-micron holes are irreversibly damaged by mechanical contact.
+\end{infobox}
+
+\subsection{Soft Water Wash and Turbulence Pot}
+
+\begin{itemize}[leftmargin=1.5em]
+  \item All dismantled components are rinsed under soft running water to remove loose viscose and surface contamination.
+  \item Components are transferred to Turbulence Pot~1 where compressed air is introduced at the base, creating vigorous upward water agitation for 15--20~minutes.
+  \item This stage removes approximately 40--50\% of gross contamination, significantly reducing the chemical load on the subsequent acid bath and extending its working life.
+\end{itemize}
+
+\subsection{Chromic Acid Bath Treatment (SOP \#2)}
+
+This is the most chemically demanding and safety-critical stage. The bath is prepared from Potassium Dichromate (K$_2$Cr$_2$O$_7$) dissolved in Sulphuric Acid (H$_2$SO$_4$) to achieve a target CrO$_3$ strength of 30~g/L.
+
+\begin{equation}
+  \text{K}_2\text{Cr}_2\text{O}_7 + \text{H}_2\text{SO}_4 \;\longrightarrow\; 2\text{CrO}_3 + \text{K}_2\text{SO}_4 + \text{H}_2\text{O}
+  \label{eq:chromic}
+\end{equation}
+
+Equation~\eqref{eq:chromic} shows the chromic acid formation reaction.
+
+\begin{itemize}[leftmargin=1.5em]
+  \item Bath temperature must be verified with a calibrated thermometer before immersion --- target 75--80$^\circ$C. Do not rely on visual or experiential assessment.
+  \item Components are fully submerged for approximately 20~minutes. The oxidising CrO$_3$ environment dissolves organic films, crystallised salts, and metallic oxide layers from within the 60-micron bores.
+  \item Spinneret holes must be oriented to allow free acid circulation through the bores. Do not stack or rest the jet face on any surface during immersion.
+  \item On removal, components are immediately transferred to boiling water for thorough rinsing. Rubber caps are cleaned separately in soft water during the acid soak period.
+\end{itemize}
+
+\subsection{Boiling Water Rinse}
+
+Immediately after removal from the acid bath, all components are rinsed in boiling water to remove every trace of chromic acid. Where caustic descaling is required, a $\sim$5\% NaOH solution at pH~8.0--8.6 is applied, followed by further rinsing.
+
+\subsection{Ultrasonic Cleaning}
+
+\begin{itemize}[leftmargin=1.5em]
+  \item Rinsed components are placed in the ultrasonic machine filled with clean soft water, operated at $\sim$50$^\circ$C for 20~minutes.
+  \item High-frequency cavitation generates millions of microscopic bubbles that collapse against component surfaces, dislodging sub-micron particles from inside the 60-micron bores that neither chemical nor mechanical washing can reach.
+  \item This stage is critical for restoring uniform flow velocity across all spinneret holes.
+\end{itemize}
+
+\subsection{Steam Treatment}
+
+Steam is applied directly to components to dislodge remaining hardened blockages. Steam line pressure must be checked before use to prevent scalding hazard. This step also clears any caustic traces from the descaling step.
+
+\subsection{pH Check --- Mandatory Quality Gate}
+
+A pH indicator test is mandatory before any component is handled without acid-resistant PPE. Any acidic reading is a hard process stop --- the component is re-rinsed and re-tested. No component proceeds to inspection until a neutral pH reading is confirmed.
+
+\subsection{Light-Box Inspection}
+
+Each spinneret body is examined under a high-intensity light box and/or magnascope for:
+\begin{itemize}[leftmargin=1.5em]
+  \item Choked or partially blocked holes (no light transmission through bore)
+  \item Surface scratches on the jet face
+  \item Acid residue discolouration
+  \item Physical deformation
+\end{itemize}
+Components passing inspection are approved for reassembly. Failed components are tagged for rework (repeat cleaning) or scrap evaluation by the supervisor.
+
+\subsection{Final Assembly and Packing}
+
+Approved components are reassembled in strict sequence using a spanner:
+\begin{enumerate}[leftmargin=1.5em]
+  \item Union (dice) as base
+  \item Perforated plate
+  \item Flat washer
+  \item Fine sieve
+  \item Spinneret body (face outward)
+  \item Rubber cap fitted to jet face
+\end{enumerate}
+The assembled jet is labelled with the room number and cleaning date, then packed in a clean container and returned to the spinning machines.
+
+% ══════════════════════════════════════════════════════════════════
+% CHAPTER 4 — METHODOLOGY (Cleaning Method Comparison)
+% ══════════════════════════════════════════════════════════════════
+\chapter{Methodology --- Cleaning Method Comparison}
+
+The four cleaning stages are complementary --- each addresses a specific category of contamination that the others cannot handle. Table~\ref{tab:method} summarises what each stage achieves and why omitting any one measurably reduces the overall result.
+
+\begin{table}[H]
+  \centering
+  \caption{Cleaning Method Comparison}
+  \label{tab:method}
+  \rowcolors{2}{rowalt}{white}
+  \begin{tabular}{L{3cm} L{3.5cm} L{3.5cm} L{3.5cm}}
+    \toprule
+    \rowcolor{darkblue}
+    \color{white}\textbf{Stage} &
+    \color{white}\textbf{What It Removes} &
+    \color{white}\textbf{Limitation} &
+    \color{white}\textbf{Why It Cannot Be Skipped} \\
+    \midrule
+    Soft Water Wash (Turbulence Pot)
+      & Loose surface deposits, soft viscose residue ($\sim$40--50\% of gross contamination)
+      & Cannot penetrate fine bore holes; ineffective against crystallised deposits
+      & Reduces gross load before acid stage; protects and extends acid bath life \\
+    Chromic Acid Bath (CrO$_3$ / H$_2$SO$_4$)
+      & Organic films, crystallised inorganic salts, metallic oxide layers inside 60~\textmu m bores
+      & Hazardous (hexavalent Cr); strict PPE required; generates toxic effluent
+      & The only stage capable of chemically dissolving deposits from inside 60~\textmu m bores \\
+    Ultrasonic Cleaning
+      & Sub-micron particles post-acid; dislodged by high-frequency cavitation
+      & Ineffective against hardened scale; requires clean water bath
+      & Achieves bore-level cleanliness not possible by chemical or mechanical means alone \\
+    Steam Treatment
+      & Hardened residual blockages; caustic traces from descaling ($\sim$5\% NaOH)
+      & Scalding hazard if steam line pressure unchecked
+      & Final clearance before inspection; ensures zero blockage \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{Safety and PPE Requirements}
+
+Chromic acid (CrO$_3$ dissolved in H$_2$SO$_4$, with K$_2$Cr$_2$O$_7$ as the hexavalent chromium source) is among the most hazardous substances in textile manufacturing. Hexavalent chromium compounds are classified as Group~1 human carcinogens (IARC). Full PPE compliance is mandatory. Table~\ref{tab:ppe} details the requirements.
+
+\begin{table}[H]
+  \centering
+  \caption{Mandatory PPE Requirements for Jet Room Operations}
+  \label{tab:ppe}
+  \rowcolors{2}{rowalt}{white}
+  \begin{tabular}{L{3.5cm} L{5cm} L{5cm}}
+    \toprule
+    \rowcolor{darkblue}
+    \color{white}\textbf{PPE Item} &
+    \color{white}\textbf{Specification} &
+    \color{white}\textbf{Mandatory Pre-Use Check} \\
+    \midrule
+    Acid-resistant gloves  & Full-length PVC or neoprene; elbow-length for acid pot work & Fill with water ($\sim$16--18$^\circ$C) and inspect for leaks before every shift \\
+    Full-face shield       & Polycarbonate splash-rated full-face protection & Check for cracks or fogging; replace if visibility is impaired \\
+    Chemical splash goggles & Indirect-vent sealed goggles (not open safety glasses) & Ensure tight seal around eyes with zero gaps \\
+    Acid-resistant apron   & Full-length PVC or rubber apron & Inspect for holes, cracks, or degraded seams \\
+    Acid-resistant footwear & Protective boots or overshoes covering ankles & Ensure no skin gap between boot and trouser hem \\
+    Ventilation            & Acid pots must be covered; area mechanically exhausted & Verify exhaust fan is running before any acid operation \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{Acid Spill and Emergency Procedure}
+
+\begin{itemize}[leftmargin=1.5em]
+  \item Skin or eye contact: flush immediately with large volumes of water for at least 15~minutes; seek medical attention without delay.
+  \item Floor spills: neutralise with sodium bicarbonate before mopping --- never mop concentrated acid with water alone.
+  \item Spent chromic acid must be collected in dedicated hazardous waste containers and processed through the approved effluent treatment facility. Drain discharge is strictly prohibited.
+\end{itemize}
+
+% ══════════════════════════════════════════════════════════════════
+% CHAPTER 5 — RESULTS AND DISCUSSIONS
+% ══════════════════════════════════════════════════════════════════
+\chapter{Results and Discussions}
+
+\section{Chemical Preparation Analysis}
+
+A back-calculation was performed on the actual chemical volumes used to prepare the chromic acid baths in Jet Rooms 1, 2, and 3, based on observed addition quantities. The target chromic acid (CrO$_3$) strength is 30~GPL, requiring a theoretical K$_2$Cr$_2$O$_7$ addition of 44.09~g/L (conversion: Strength GPL = Dichromate GPL $\times$ 0.6804).
+
+\subsection{Observed Chemical Additions}
+
+\begin{itemize}[leftmargin=1.5em]
+  \item \textbf{Room~1 (374~L pot):} 367~L H$_2$SO$_4$ + 7~L Dichromate solution = 374~L (exact fill --- zero water make-up)
+  \item \textbf{Room~2 (69~L pot):} 50~L H$_2$SO$_4$ + 8.5~L Dichromate solution + $\sim$10.5~L water = 69~L
+  \item \textbf{Room~3 (205~L pot):} 190~L H$_2$SO$_4$ + 10~L Dichromate solution + $\sim$5~L water = 205~L
+\end{itemize}
+
+Table~\ref{tab:chemprep} presents the back-calculated chemical preparation data for all three rooms.
+
+\begin{table}[H]
+  \centering
+  \caption{Back-Calculated Chemical Preparation Data}
+  \label{tab:chemprep}
+  \rowcolors{2}{rowalt}{white}
+  \begin{tabular}{C{1.5cm} C{1.5cm} C{1.5cm} C{1.5cm} C{1.5cm} C{1.8cm} C{1.8cm}}
+    \toprule
+    \rowcolor{darkblue}
+    \color{white}\textbf{Room} &
+    \color{white}\textbf{Pot Vol.\ (L)} &
+    \color{white}\textbf{H$_2$SO$_4$ (L)} &
+    \color{white}\textbf{Dichromate (L)} &
+    \color{white}\textbf{Water (L)} &
+    \color{white}\textbf{K$_2$Cr$_2$O$_7$ Req.\ (kg)} &
+    \color{white}\textbf{Stock Conc.\ (GPL)} \\
+    \midrule
+    1 & 374 & 367 & 7   & 0    & 16.49 & $\sim$2{,}356 \\
+    2 & 69  & 50  & 8.5 & 10.5 & 3.04  & $\sim$358     \\
+    3 & 205 & 190 & 10  & 5    & 9.04  & $\sim$904     \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{infobox}
+\textbf{Key Insight:} Standardising dichromate stock concentration across all Jet Rooms and implementing a fixed, pot-size-proportional dosing schedule would be the single highest-impact and lowest-cost intervention to bring all rooms to the 30~GPL target consistently. Room~1's concentrated bath ($\sim$2{,}356~GPL stock) is the model to replicate.
+\end{infobox}
+
+\section{Chromic Acid Bath --- Weekly Audit Data and Analysis}
+
+Chromic acid bath parameters were recorded across all six Jet Rooms over three consecutive weekly audit cycles (01-Jun, 08-Jun, and 15-Jun 2026). Table~\ref{tab:audit} presents the combined three-week data.
+
+\textit{Colour key --- Deviation from 30~GPL target: Green $\leq$5~GPL (Acceptable) | Yellow 5--10~GPL (Monitor) | Red $>$10~GPL (Immediate Action Required)}
+
+\begin{table}[H]
+  \centering
+  \caption{Combined 3-Week Chromic Acid Strength \& Deviation Audit --- All Six Jet Rooms}
+  \label{tab:audit}
+  \begin{tabular}{C{1.2cm} C{1.5cm} C{1.5cm} C{1.5cm} C{1.5cm} C{1.5cm} C{1.5cm} L{2.8cm}}
+    \toprule
+    \rowcolor{darkblue}
+    \color{white}\textbf{Room} &
+    \color{white}\textbf{Str.\ 01-Jun} &
+    \color{white}\textbf{Dev.\ 01-Jun} &
+    \color{white}\textbf{Str.\ 08-Jun} &
+    \color{white}\textbf{Dev.\ 08-Jun} &
+    \color{white}\textbf{Str.\ 15-Jun} &
+    \color{white}\textbf{Dev.\ 15-Jun} &
+    \color{white}\textbf{3-Week Trend} \\
+    \midrule
+    1 & 28.42 & \cellcolor{greenlight}1.58  & ---   & \cellcolor{lightgray}---   & 22.30 & \cellcolor{yellowlight}7.70  & $\downarrow$ Stable $\to$ Rising \\
+    2 & 15.57 & \cellcolor{redlight}\textbf{14.43} & 15.91 & \cellcolor{redlight}\textbf{14.09} & 21.21 & \cellcolor{yellowlight}8.79 & $\downarrow$ Gradually Improving \\
+    3 & 11.92 & \cellcolor{redlight}\textbf{16.05} & 19.58 & \cellcolor{redlight}\textbf{10.42} & 16.32 & \cellcolor{redlight}\textbf{13.68} & $\updownarrow$ Persistently High \\
+    4 & 21.82 & \cellcolor{yellowlight}8.18  & 22.84 & \cellcolor{yellowlight}7.16  & 21.69 & \cellcolor{yellowlight}8.31  & $\rightarrow$ Stable (Moderate) \\
+    5 & 22.30 & \cellcolor{yellowlight}7.70  & 27.74 & \cellcolor{greenlight}2.26  & 28.96 & \cellcolor{greenlight}1.04  & $\downarrow\downarrow$ Best Improvement \\
+    6 & 21.96 & \cellcolor{yellowlight}8.04  & 16.32 & \cellcolor{redlight}\textbf{13.68} & 28.82 & \cellcolor{greenlight}1.18  & $\updownarrow$ Volatile \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{Room-by-Room Trend Analysis}
+
+\textbf{Jet Room~1 --- Best Overall.}
+Lowest average deviation ($\sim$4.6~GPL). Recorded the best single reading in the dataset (1.58~GPL on 01-Jun). The rise to 7.70~GPL by 15-Jun reflects gradual bath depletion between audit cycles; a mid-week top-up would maintain this room in the Green zone.
+
+\textbf{Jet Room~2 --- Consistently Poor.}
+Red zone for both Week~1 and Week~2 (14.43 and 14.09~GPL). Improvement to 8.79~GPL by Week~3 is positive but still Yellow. Root cause is the significantly weaker dichromate stock concentration ($\sim$358~GPL vs.\ $\sim$2{,}356~GPL in Room~1).
+
+\textbf{Jet Room~3 --- Worst Overall.}
+Persistently in the Red zone across all three weeks (16.05 $\to$ 10.42 $\to$ 13.68~GPL); the only room that never reached the Yellow zone. Holds the highest single deviation in the study (16.05~GPL on 01-Jun). Requires immediate investigation of chemical preparation and replenishment frequency.
+
+\textbf{Jet Room~4 --- Most Stable.}
+Deviation ranged only from 7.16 to 8.31~GPL --- the most consistent room. Entirely Yellow with no spikes; represents a controlled but sub-optimal bath management practice.
+
+\textbf{Jet Room~5 --- Best Improvement.}
+Deviation fell from 7.70~GPL to 1.04~GPL between Week~1 and Week~3 --- the only room to reach and sustain the Green zone. Direct evidence that focused replenishment following an initial audit can restore bath performance within a single cycle.
+
+\textbf{Jet Room~6 --- Most Volatile.}
+Largest single-week swing: 8.04~GPL $\to$ 13.68~GPL $\to$ 1.18~GPL. Excellent final reading, but the Red-zone spike confirms a reactive rather than scheduled dosing pattern.
+
+\subsection{Cross-Room Performance Summary}
+
+Table~\ref{tab:summary} provides a consolidated performance summary across all six rooms.
+
+\begin{table}[H]
+  \centering
+  \caption{Cross-Room Chromic Acid Bath Performance Summary}
+  \label{tab:summary}
+  \rowcolors{2}{rowalt}{white}
+  \begin{tabular}{C{1.5cm} C{2cm} C{2cm} C{2cm} C{2cm} L{4cm}}
+    \toprule
+    \rowcolor{darkblue}
+    \color{white}\textbf{Room} &
+    \color{white}\textbf{Dev.\ 01-Jun} &
+    \color{white}\textbf{Dev.\ 08-Jun} &
+    \color{white}\textbf{Dev.\ 15-Jun} &
+    \color{white}\textbf{Avg.\ Dev.} &
+    \color{white}\textbf{Overall Performance} \\
+    \midrule
+    1 & 1.58  & ---   & 7.70  & $\sim$4.6~GPL  & Best overall \\
+    2 & 14.43 & 14.09 & 8.79  & 12.4~GPL       & Consistently poor \\
+    3 & 16.05 & 10.42 & 13.68 & 13.4~GPL       & Worst overall \\
+    4 & 8.18  & 7.16  & 8.31  & 7.9~GPL        & Most stable (sub-optimal) \\
+    5 & 7.70  & 2.26  & 1.04  & 3.7~GPL        & Best improvement \\
+    6 & 8.04  & 13.68 & 1.18  & 7.6~GPL        & Most volatile \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+% ══════════════════════════════════════════════════════════════════
+% CHAPTER 6 — CONCLUSIONS AND FUTURE WORK
+% ══════════════════════════════════════════════════════════════════
+\chapter{Conclusions and Future Work}
+
+The Jet Cleaning and Inspection System at Nagda Unit is a well-structured, multi-stage process that effectively combines mechanical, chemical, and ultrasonic cleaning with a two-stage quality inspection to ensure only fully functional, residue-free spinnerets are returned to production. The process logic is sound --- each stage addresses contamination that the others cannot handle, and the sequence maximises the effectiveness of every subsequent step.
+
+However, the three-week chromic acid audit and chemical preparation back-calculation reveal a measurable and correctable gap between the process as designed and the process as executed in several Jet Rooms. Rooms~2, 3, and~6 show persistent or volatile deviations from the 30~GPL target that directly compromise cleaning effectiveness. The root cause is not a process design failure --- it is an inconsistency in chemical preparation practices, specifically the variation in dichromate stock concentration and the absence of a fixed, scheduled dosing protocol.
+
+The contrast between Room~1 (best preparation, lowest deviation, best outcomes) and Room~2 (weakest stock, highest deviation, poorest outcomes) makes the corrective path clear. Jet Room~5's improvement from 7.70~GPL to 1.04~GPL within two weeks proves that the capability to fix the underperforming rooms already exists within the current process.
+
+\textbf{Future work} should consider:
+\begin{itemize}[leftmargin=1.5em]
+  \item Extending the audit to 8--12 weeks to confirm trend stability after implementing standardised dosing.
+  \item Evaluating the feasibility of automated dichromate titration equipment for daily bath monitoring.
+  \item Developing a formal light-box inspection acceptance standard with photographic reference samples.
+  \item Investigating enzyme-based or alternative cleaning agents as long-term replacements for hexavalent chromium baths, given their carcinogenic classification.
+\end{itemize}
+
+% ══════════════════════════════════════════════════════════════════
+% CHAPTER 7 — RECOMMENDATIONS
+% ══════════════════════════════════════════════════════════════════
+\chapter{Recommendations}
+
+Table~\ref{tab:rootcause} presents the root cause analysis and actionable recommendations for all identified defects and process gaps.
+
+\begin{longtable}{L{3cm} L{3.5cm} L{3.5cm} L{3.5cm}}
+  \caption{Root Cause Analysis and Recommendations}
+  \label{tab:rootcause} \\
+  \toprule
+  \rowcolor{darkblue}
+  \color{white}\textbf{Defect / Issue} &
+  \color{white}\textbf{Root Cause} &
+  \color{white}\textbf{Observed Impact} &
+  \color{white}\textbf{Recommendation} \\
+  \midrule
+  \endfirsthead
+
+  \multicolumn{4}{c}{\small\textit{(Table~\ref{tab:rootcause} continued)}} \\
+  \toprule
+  \rowcolor{darkblue}
+  \color{white}\textbf{Defect / Issue} &
+  \color{white}\textbf{Root Cause} &
+  \color{white}\textbf{Observed Impact} &
+  \color{white}\textbf{Recommendation} \\
+  \midrule
+  \endhead
+
+  \rowcolor{rowalt}
+  High \& persistent chromic acid deviation (Rooms 2 \& 3)
+  & Weaker dichromate stock in Room~2 ($\sim$358~GPL vs.\ $\sim$2{,}356~GPL in Room~1); faster bath depletion than weekly replenishment in Room~3
+  & Incomplete dissolution of organic residues from 60~\textmu m bores; jets returned with residual blockages
+  & Standardise dichromate stock concentration across all rooms; adopt pot-size-proportional fixed dosing schedule \\
+
+  Volatile bath strength (Room~6: 8.04$\to$13.68$\to$1.18~GPL)
+  & Reactive dosing --- additions made only when deviation is observed, not on a fixed schedule
+  & Unpredictable cleaning quality; outcomes dependent on individual operators
+  & Introduce shift-wise dosing log with fixed addition quantity per jet throughput count \\
+
+  \rowcolor{rowalt}
+  Missing audit data (Room~1, 08-Jun)
+  & Jet under maintenance; operator did not record bath parameters
+  & Bath condition unverifiable; gap in quality audit trail
+  & Mandate recording for all rooms regardless of status; mark offline rooms as `Under Maintenance' \\
+
+  Choked / partially blocked holes
+  & Insufficient ultrasonic duration or low bath temperature during cleaning
+  & Filament breaks, denier variation, elevated pump back-pressure
+  & Verify ultrasonic temperature ($\sim$50$^\circ$C) before each cycle; extend soak if blockage found at inspection \\
+
+  \rowcolor{rowalt}
+  Residual acid trace post-cleaning
+  & Boiling-water rinse shortened during high-throughput shifts
+  & Risk to viscose dope chemistry; operator skin and eye contact hazard
+  & Enforce minimum 5-minute timed boiling-water rinse; mandatory pH check before any bare-hand contact \\
+
+  No inspection acceptance criterion
+  & Light-box check relies on operator experience; no documented benchmark
+  & Inconsistent rejection rates; subjective and non-auditable quality decisions
+  & Create formal go/no-go standard with photographic reference samples for maximum permissible blockage per jet \\
+  \bottomrule
+\end{longtable}
+
+\section{Key Observations and Personal Findings}
+
+The following observations were made during direct engagement with the Jet Room process and are not captured in standard audit metrics:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item Chromic acid bath temperature was not consistently verified with a calibrated instrument before jet immersion. A thermocouple-based indicator at each acid pot with a clear go/no-go signal would eliminate this uncertainty at very low cost.
+
+  \item Glove leak-testing, while mandated in the SOP, was observed to be performed hastily during high-throughput periods. A formal pre-shift PPE sign-off by the shift supervisor would enforce more consistent compliance.
+
+  \item The light-box inspection has no documented pass/fail acceptance criterion. Two operators assessed the same spinneret differently on two separate occasions during the study. A formal standard with photographic reference samples would make this stage consistent and auditable.
+
+  \item The relationship between dichromate stock concentration and deviation is unmistakable: Room~1 (highest stock, $\sim$2{,}356~GPL) consistently performs best; Room~2 (lowest stock, $\sim$358~GPL) consistently performs worst. This single controllable variable is the dominant driver of bath performance variation.
+
+  \item Jet Room~5's recovery from 7.70~GPL to 1.04~GPL within two audit cycles is the most practically valuable finding of this study --- it proves that underperforming baths can be fully restored within a single weekly cycle through focused replenishment.
+
+  \item The Excel-based recording system works but is fragmented across six separate room sheets. A single consolidated weekly workbook with automatic colour-coded deviation flagging and running averages would reduce recording gaps and enable faster corrective action.
+\end{itemize}
+
+\section{Consequences of Improper Jet Cleaning}
+
+If jets are not cleaned and inspected as per the defined process, the following quality and operational failures arise on the spinning floor:
+
+\begin{itemize}[leftmargin=1.5em]
+  \item Choked holes cause filament breaks and reduced first-pass quality, increasing machine stoppages and operator intervention.
+  \item Non-uniform extrusion produces denier variation within the tow, creating quality defects through all downstream processes.
+  \item Increased pump back-pressure accelerates seal wear, increases energy consumption, and causes unscheduled downtime.
+  \item Residual chromic acid on a returned jet damages viscose dope chemistry and poses a chemical hazard to spinning floor operators.
+  \item Shortened cleaning cycles reduce the operational lifespan of the Gold--Rhodium--Cadmium jet alloy through corrosion or irremovable scale build-up.
+  \item Higher rejection and rework rates increase total production costs and require additional machine downtime for jet changeovers.
+\end{itemize}
+
+% ══════════════════════════════════════════════════════════════════
+\bibliography{ref}
+\addcontentsline{toc}{chapter}{Bibliography}
+
+% ══════════════════════════════════════════════════════════════════
+\begin{appendices}
+
+\chapter{Chromic Acid Chemistry}
+
+The chromic acid bath used in spinneret cleaning is formed by the reaction of Potassium Dichromate with Sulphuric Acid:
+
+\begin{equation}
+  \text{K}_2\text{Cr}_2\text{O}_7 + \text{H}_2\text{SO}_4 \;\longrightarrow\; 2\text{CrO}_3 + \text{K}_2\text{SO}_4 + \text{H}_2\text{O}
+\end{equation}
+
+The target chromic acid (CrO$_3$) strength is 30~g/L. The conversion between dichromate concentration and chromic acid strength uses the molecular weight ratio:
+
+\begin{equation}
+  \text{Strength (GPL)} = \text{Dichromate (GPL)} \times \frac{2 \times M(\text{CrO}_3)}{M(\text{K}_2\text{Cr}_2\text{O}_7)}
+  = \text{Dichromate (GPL)} \times \frac{2 \times 100}{294.18} = \text{Dichromate (GPL)} \times 0.6804
+\end{equation}
+
+Therefore, to achieve 30~GPL chromic acid strength:
+\begin{equation}
+  \text{K}_2\text{Cr}_2\text{O}_7 \text{ required} = \frac{30}{0.6804} = 44.09 \text{ g/L}
+\end{equation}
+
+\chapter{Weekly Audit Raw Data}
+\label{appB}
+
+The following tables present the complete raw data recorded during the three weekly chromic acid bath audits.
+
+\textbf{Audit 1 --- 01 June 2026}
+
+\begin{table}[H]
+  \centering
+  \rowcolors{2}{rowalt}{white}
+  \begin{tabular}{C{2cm} C{3cm} C{3cm} C{3cm} C{3cm}}
+    \toprule
+    \rowcolor{darkblue}
+    \color{white}\textbf{Room} &
+    \color{white}\textbf{Acidity H$_2$SO$_4$ (GPL)} &
+    \color{white}\textbf{Dichromate (GPL)} &
+    \color{white}\textbf{Str.\ of CrO$_3$ (GPL)} &
+    \color{white}\textbf{Deviation (GPL)} \\
+    \midrule
+    1 & 1617 & 41.8 & 28.42 & \cellcolor{greenlight}1.58 \\
+    2 & 1725 & 22.9 & 15.57 & \cellcolor{redlight}14.43 \\
+    3 & 1803 & 20.5 & 11.92 & \cellcolor{redlight}16.05 \\
+    4 & 1744 & 32.1 & 21.82 & \cellcolor{yellowlight}8.18 \\
+    5 & 1715 & 32.8 & 22.30 & \cellcolor{yellowlight}7.70 \\
+    6 & 1720 & 32.3 & 21.96 & \cellcolor{yellowlight}8.04 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\textbf{Audit 2 --- 08 June 2026}
+
+\begin{table}[H]
+  \centering
+  \rowcolors{2}{rowalt}{white}
+  \begin{tabular}{C{2cm} C{3cm} C{3cm} C{3cm} C{3cm}}
+    \toprule
+    \rowcolor{darkblue}
+    \color{white}\textbf{Room} &
+    \color{white}\textbf{Acidity H$_2$SO$_4$ (GPL)} &
+    \color{white}\textbf{Dichromate (GPL)} &
+    \color{white}\textbf{Str.\ of CrO$_3$ (GPL)} &
+    \color{white}\textbf{Deviation (GPL)} \\
+    \midrule
+    1 & --- & --- & --- & \cellcolor{lightgray}--- \\
+    2 & 1744 & 23.4 & 15.91 & \cellcolor{redlight}14.09 \\
+    3 & 1754 & 28.8 & 19.58 & \cellcolor{redlight}10.42 \\
+    4 & 1715 & 33.6 & 22.84 & \cellcolor{yellowlight}7.16 \\
+    5 & 1749 & 40.8 & 27.74 & \cellcolor{greenlight}2.26 \\
+    6 & 1700 & 24.0 & 16.32 & \cellcolor{redlight}13.68 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\textbf{Audit 3 --- 15 June 2026}
+
+\begin{table}[H]
+  \centering
+  \rowcolors{2}{rowalt}{white}
+  \begin{tabular}{C{2cm} C{3cm} C{3cm} C{3cm} C{3cm}}
+    \toprule
+    \rowcolor{darkblue}
+    \color{white}\textbf{Room} &
+    \color{white}\textbf{Acidity H$_2$SO$_4$ (GPL)} &
+    \color{white}\textbf{Dichromate (GPL)} &
+    \color{white}\textbf{Str.\ of CrO$_3$ (GPL)} &
+    \color{white}\textbf{Deviation (GPL)} \\
+    \midrule
+    1 & 1637 & 32.8 & 22.30 & \cellcolor{yellowlight}7.70 \\
+    2 & 1725 & 31.2 & 21.21 & \cellcolor{yellowlight}8.79 \\
+    3 & 1740 & 24.0 & 16.32 & \cellcolor{redlight}13.68 \\
+    4 & 1764 & 31.9 & 21.69 & \cellcolor{yellowlight}8.31 \\
+    5 & 1597 & 42.6 & 28.96 & \cellcolor{greenlight}1.04 \\
+    6 & 1558 & 42.4 & 28.82 & \cellcolor{greenlight}1.18 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\end{appendices}
+
+\end{document}
